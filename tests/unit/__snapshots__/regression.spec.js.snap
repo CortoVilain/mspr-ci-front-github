@@ -1,0 +1,239 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Client.vue renders correctly 1`] = `
+<div
+  id="app"
+>
+  <v-row
+    align="center"
+    justify="center"
+  >
+    <v-col
+      cols="8"
+    >
+      <div
+        style="text-align: right;"
+      >
+        CA - HT : 0 €
+      </div>
+       
+      <div
+        style="text-align: right;"
+      >
+        CA - TTC : 0 €
+      </div>
+       
+      <div
+        style="height: 40px;"
+      >
+        <v-btn
+          color="primary"
+          small=""
+          style="float: right;"
+        >
+          <router-link
+            style="color: white; text-decoration: none;"
+            to="/statistique"
+          >
+            Statistiques
+          </router-link>
+        </v-btn>
+      </div>
+       
+      <v-row
+        justify="center"
+      >
+        <v-dialog
+          max-width="600px"
+          persistent=""
+        >
+           
+          <v-card>
+            <v-card-title>
+              <span
+                class="headline"
+              >
+                Ajout utilisateur
+              </span>
+            </v-card-title>
+             
+            <v-card-text>
+              <v-container>
+                <v-row>
+                  <v-col
+                    cols="12"
+                    md="6"
+                    sm="6"
+                  >
+                    <v-text-field
+                      id="firstname"
+                      label="Prénom"
+                    />
+                  </v-col>
+                   
+                  <v-col
+                    cols="12"
+                    md="6"
+                    sm="6"
+                  >
+                    <v-text-field
+                      id="lastname"
+                      label="Nom"
+                    />
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-card-text>
+             
+            <v-card-actions>
+              <v-spacer />
+               
+              <v-btn
+                color="blue darken-1"
+                text=""
+              >
+                Annuler
+              </v-btn>
+               
+              <v-btn
+                color="blue darken-1"
+                id="addUser"
+                text=""
+              >
+                Enregistrer
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </v-row>
+       
+      <v-simple-table
+        fixed-header="true"
+      />
+    </v-col>
+  </v-row>
+   
+  <v-dialog
+    fullscreen=""
+    hide-overlay=""
+    scrollable=""
+    transition="dialog-bottom-transition"
+  >
+    <v-card>
+      <v-toolbar
+        flat="true"
+      >
+        <v-btn
+          class="back"
+          style="background: none; box-shadow: none;"
+        >
+          <img
+            height="23"
+            src="../assets/back.png"
+            width="24"
+          />
+        </v-btn>
+         
+        <v-toolbar-title
+          style="margin: 0px auto; font-size: 24px; font-weight: bold; padding-right: 24px;"
+        >
+          
+        </v-toolbar-title>
+      </v-toolbar>
+       
+      <v-card-text>
+        <v-row
+          justify="center"
+        >
+          <v-dialog
+            max-width="600px"
+            persistent=""
+          >
+             
+            <v-card>
+              <v-card-title>
+                <span
+                  class="headline"
+                >
+                  Ajout produit
+                </span>
+              </v-card-title>
+               
+              <v-card-text>
+                <v-container>
+                  <v-row>
+                    <v-col
+                      cols="12"
+                      md="4"
+                      sm="4"
+                    >
+                      <v-text-field
+                        id="product"
+                        label="Produit"
+                      />
+                    </v-col>
+                     
+                    <v-col
+                      cols="12"
+                      md="4"
+                      sm="4"
+                    >
+                      <v-text-field
+                        id="quantity"
+                        label="Quantité"
+                      />
+                    </v-col>
+                     
+                    <v-col
+                      cols="12"
+                      md="4"
+                      sm="4"
+                    >
+                      <v-text-field
+                        id="unitPrice"
+                        label="Prix unitaire"
+                      />
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card-text>
+               
+              <v-card-actions>
+                <v-spacer />
+                 
+                <v-btn
+                  color="blue darken-1"
+                  text=""
+                >
+                  Annuler
+                </v-btn>
+                 
+                <v-btn
+                  color="blue darken-1"
+                  id="addProduct"
+                  text=""
+                >
+                  Enregistrer
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+        </v-row>
+         
+        <v-row
+          align="center"
+          justify="center"
+        >
+          <v-col
+            cols="8"
+          >
+            <v-simple-table
+              fixed-header="true"
+            />
+          </v-col>
+        </v-row>
+      </v-card-text>
+    </v-card>
+  </v-dialog>
+</div>
+`;

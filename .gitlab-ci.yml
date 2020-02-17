@@ -1,0 +1,68 @@
+stages:
+  - setup
+  - test
+  - build
+  - deploy
+
+variables:
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ""
+  KUBE_CONFIG: $KUBE_CONFIG
+  DEPLOYMENT: mspr-front
+  NAMESPACE: mspr-front
+  IMAGE_TAG: mspr-front
+  DOCKER_HUB: thobre
+
+
+
+setup:
+  image: node:12
+  stage: setup
+  artifacts:
+    name: "artifacts-$CI_PIPELINE_ID"
+    expire_in: 1 hour
+    paths:
+      - node_modules/
+  script:
+    - yarn install
+
+
+  
+cypress-test:
+  image: cypress/base:10
+  stage: test
+  script:
+    - npm i @vue/cli-plugin-e2e-cypress@4.0.5 cypress
+    - npm run cy:run -- --spec "cypress/integration/sample_spec.js"
+    
+unit-test:
+  image: node:12
+  stage: test
+  script:
+    - npm test -- -u
+
+
+master_tag:
+  image: docker:19.03.1
+  stage: build
+  services:
+    - docker:dind
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t registry.gitlab.com/kroupe/mspr-front .
+    - docker push registry.gitlab.com/kroupe/mspr-front
+  only:
+    - master
+
+
+
+deploy_staging:
+  image: hublo/kubectl:1.17
+  stage: deploy
+  script:
+    - mkdir -p $HOME/.kube
+    - printf "$KUBE_CONFIG" > $HOME/.kube/config
+    - cat $HOME/.kube/config
+    - kubectl rollout restart deployment/mspr-front
+  only:
+    - master
